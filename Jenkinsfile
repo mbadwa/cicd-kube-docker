@@ -82,11 +82,10 @@ pipeline {
         stage ('Upload Image to DockerHub') {
             steps{
                 script {
-                    docker.withRegistry('mbadwa/vproapp', registryCredential) {
-                    dockerImage.push("V$BUILD_NUMBER")
-                    dockerImage.push('latest')
-                }
-
+                   docker.withRegistry('', registryCredential) {
+                   dockerImage.push("V$BUILD_NUMBER")
+                   dockerImage.push('latest')
+                   }
                 }
             }
         }
