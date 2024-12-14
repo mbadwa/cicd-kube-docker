@@ -97,7 +97,7 @@ pipeline {
         }
 
         stage ('Deploy into K8s Cluster') {
-            agent {label 'KOPS NODE'}
+            agent {label 'KOPS'}
             steps {
                 sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
             }
